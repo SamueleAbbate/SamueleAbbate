@@ -33,7 +33,7 @@ val = "valore nullo non posso converire questo testo"
 # qui leggo il file da cryptare
 num = input("inserisci il numero delle lettere spazzi inclusi: ")
 
-file = "mattklaw91"
+file = "inserisci file"
 
 #qui inizio a cryptare il file ATTENZIONE! NON SOSTITUIRE/CAMBIARE NULLA SE NON SI E' SICURI DI COSA SI STA FACENDO
 
