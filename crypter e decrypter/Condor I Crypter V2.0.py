@@ -31,9 +31,9 @@ space = " "
 val = "valore nullo non posso converire questo testo"
 
 # qui leggo il file da cryptare
-num = int(input("inserisci il numero delle lettere spazzi inclusi: "))
+file = input("inserisci la stringa: ")
 
-file = "ciao come stai"
+num = len(file)
 
 for ix in range (0,num):
     try:
