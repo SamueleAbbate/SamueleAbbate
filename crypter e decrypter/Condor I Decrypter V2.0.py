@@ -31,9 +31,9 @@ space = " "
 val = "error"
 
 # qui leggo il file da cryptare
-num = int(input("inserisci il numero delle lettere spazzi inclusi: "))
+file = input("inserisci la stringa: ")
 
-file = "hrcv hvew ijcr"
+num = len(file)
 for ix in range (0,num):
     try:
         if file[ix] =="c":
