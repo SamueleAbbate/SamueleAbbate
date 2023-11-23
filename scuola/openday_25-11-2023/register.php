@@ -10,11 +10,12 @@
     <li><a href="./register.php">Registrati</a></li>
     <li><a href="./login.php">Accedi</a></li>
    <?php
-   session_start();
-   if (isset($_SESSION['username'])){
-    $username = $_SESSION['username'];
-    echo $username . '<li style="float:right"><a class="active" href="/logout.php">Log Out</a></li>';
-   }
+   
+    session_start();
+    if (isset($_SESSION['username'])){
+        $username = $_SESSION['username'];
+        echo '<li style="float:right"><a class="active" href="./logout.php">'. htmlspecialchars($username) .' Esci</a></li>';
+    }
 
     ?>
     </ul>
