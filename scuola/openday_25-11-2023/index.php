@@ -13,7 +13,7 @@
    session_start();
    if (isset($_SESSION['username'])){
     $username = $_SESSION['username'];
-    echo '<li style="float:right"><a class="active" href="./logout.php">'. $username .' Esci</a></li>';
+    echo '<li style="float:right"><a class="active" href="./logout.php">'. htmlspecialchars($username) .' Esci</a></li>';
    }
 
     ?>
@@ -26,7 +26,7 @@
     CIAO <?php 
     
     if (isset($_SESSION['username'])){
-        echo $_SESSION['username'];
+      htmlspecialchars($username);
     }else{
         echo 'STUDENTE';
     }?>
