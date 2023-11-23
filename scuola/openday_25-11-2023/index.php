@@ -26,7 +26,7 @@
     CIAO <?php 
     
     if (isset($_SESSION['username'])){
-      htmlspecialchars($username);
+      echo htmlspecialchars($username);
     }else{
         echo 'STUDENTE';
     }?>
